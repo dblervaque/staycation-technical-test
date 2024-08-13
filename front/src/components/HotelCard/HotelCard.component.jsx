@@ -19,12 +19,17 @@ const HotelCardBase = ({
   name,
   stars,
   preview,
+  avgScore,
+  reviewCount,
 }) => (
   <div className="hotel__card">
     <img src={pictureId} />
     <div className="hotel__card__name__container">
       <p className='hotel__card__name'>{name}</p>
       <StarBase stars={stars} />
+      <div>
+        {avgScore+''} ({reviewCount+''})
+      </div>
     </div>
     <p>{preview}</p>
   </div>

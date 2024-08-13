@@ -4,6 +4,7 @@ import Header from './Header'
 import HotelCard from './HotelCard/HotelCard.component';
 
 import { fetchHotels } from '../api/hotels';
+import { HotelCardContext, HotelCardContextProvider } from './HotelCard/HotelCard.context';
 
 const App = () => {
   const [hotels, setHotels] = useState([]);
@@ -22,12 +23,21 @@ const App = () => {
       <div className='app__body'>
         {
           hotels.map((hotel) => (
-            <HotelCard 
-              name={hotel.name}
-              pictureId={hotel.pictureId}
-              stars={hotel.stars}
-              preview={hotel.preview}
-            />
+            <HotelCardContextProvider hotelId={hotel.id}>
+              <HotelCardContext.Consumer>
+                {({ avgScore, reviewCount }) => (
+                  <HotelCard 
+                    name={hotel.name}
+                    pictureId={hotel.pictureId}
+                    stars={hotel.stars}
+                    preview={hotel.preview}
+                    avgScore={avgScore}
+                    reviewCount={reviewCount}
+                  />
+                )}
+                
+              </HotelCardContext.Consumer>
+            </HotelCardContextProvider>
           ))
         }
       </div>
