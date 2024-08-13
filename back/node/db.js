@@ -1,12 +1,11 @@
-import { Client } from 'pg'
+import postgres from "postgres";
 
-const client = new Client({
+const client = postgres({
   user: 'staycation',
   host: 'localhost',
   database: 'staycation',
   password: 'password',
   port: 5432
-})
-client.connect()
+});
 
-export default client
+export default client;
