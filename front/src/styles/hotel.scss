@@ -1,0 +1,28 @@
+@import 'colors';
+
+.hotel__card {
+  img {
+    border-radius: 8px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .hotel__card__name__container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    .hotel__card__name {
+      color: $text;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .hotel__card__stars {
+      position: relative;
+      top: -4px;
+    }
+  }
+}
