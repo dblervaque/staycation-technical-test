@@ -6,6 +6,8 @@ import HotelCard from './HotelCard/HotelCard.component';
 import { fetchHotels } from '../api/hotels';
 import { HotelCardContext, HotelCardContextProvider } from './HotelCard/HotelCard.context';
 
+import 'styles/app.scss'
+
 const App = () => {
   const [hotels, setHotels] = useState([]);
 
