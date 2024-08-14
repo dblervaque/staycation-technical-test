@@ -49,23 +49,33 @@ export const getHotelAvailability = async (hotelId) => {
     // return 404 no hotel rooms found
   }
 
-  console.log(hotelRooms)
-
   const roomOpenings = await sql`
     select *
     from openings
     where room_id in ${sql(hotelRooms.map(({ id }) => id))}
   `;
-
   const roomOpeningsCC = roomOpenings.map(camelCase);
 
-  const bestRoom = roomOpeningsCC.sort(
+  const roomBookings = await sql`
+    select *
+    from bookings
+    where room_id in ${sql(hotelRooms.map(({ id}) => id))}
+  `;
+  const roomBookingsCC = roomBookings.map(camelCase);
+
+  const sortedRoom = roomOpeningsCC.sort(
     (a, b) => {
       return a.discountPrice - b.discountPrice;
     }
   );
 
-  console.log(JSON.stringify(bestRoom[0]));
+  let bestRoom;
+  sortedRoom.forEach((room) => {
+    const isRoomBooked = roomBookingsCC.findIndex(({ date }) => date === room.date);
+    if (isRoomBooked === -1 && !bestRoom) {
+      bestRoom = room;
+    }
+  });
 
-  return bestRoom[0];
+  return bestRoom;
 }
