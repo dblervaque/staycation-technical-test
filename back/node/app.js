@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 
 import { getUser } from './services/userService'
-import { getHotelReview, getHotels } from './services/hotelsService'
+import { getHotelAvailability, getHotelReview, getHotels } from './services/hotelsService'
 
 const app = express()
 
@@ -35,6 +35,14 @@ app.get('/hotels/:hotelId/reviews', async (req, res) => {
     res.status(501);
   }
 })
+
+app.get('/hotels/:hotelId/openings', async (req, res) => {
+  const hotelId = req.params.hotelId;
+
+  const data = await getHotelAvailability(hotelId);
+
+  res.send(data);
+});
 
 app.listen(9000, function () {
   console.log('Example app listening on port 9000!')

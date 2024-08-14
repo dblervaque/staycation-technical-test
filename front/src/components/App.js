@@ -25,7 +25,7 @@ const App = () => {
           hotels.map((hotel) => (
             <HotelCardContextProvider hotelId={hotel.id}>
               <HotelCardContext.Consumer>
-                {({ avgScore, reviewCount }) => (
+                {({ avgScore, reviewCount, opening }) => (
                   <HotelCard 
                     name={hotel.name}
                     pictureId={hotel.pictureId}
@@ -33,6 +33,7 @@ const App = () => {
                     preview={hotel.preview}
                     avgScore={avgScore}
                     reviewCount={reviewCount}
+                    opening={opening}
                   />
                 )}
                 
