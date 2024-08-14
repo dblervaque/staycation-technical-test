@@ -1,28 +1,52 @@
 @import 'colors';
 
 .hotel__card {
+  width: 800px;
+
   img {
     border-radius: 8px;
+    width: 100%;
   }
 
   p {
     margin: 0;
   }
 
-  .hotel__card__name__container {
+  .hotel__card__top__line__container {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    justify-content: space-between;
 
-    .hotel__card__name {
-      color: $text;
-      font-weight: bold;
-      font-size: 16px;
+    .hotel__card__name__container {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+
+      .hotel__card__name {
+        color: $text;
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      .hotel__card__stars {
+        position: relative;
+        top: -4px;
+      }
     }
+    .hotel__card__score__container {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
 
-    .hotel__card__stars {
-      position: relative;
-      top: -4px;
+      .hotel__card__avg__score {
+        font-weight: 600;
+        font-size: 16px;
+        color: $text-light;
+      }
+
+      .hotel__card__total_reviews {
+        color: $text-light;
+      }
     }
   }
 }
