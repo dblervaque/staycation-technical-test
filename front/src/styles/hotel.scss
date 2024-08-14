@@ -33,6 +33,7 @@
         top: -4px;
       }
     }
+
     .hotel__card__score__container {
       display: flex;
       flex-direction: row;
@@ -47,6 +48,33 @@
       .hotel__card__total_reviews {
         color: $text-light;
       }
+    }
+  }
+
+  .hotel__card__opening__container {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+
+    .hotel__card__opening__discount {
+      color: $text;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .hotel__card__opening__price {
+      color: $text-light;
+      font-size: 16px;
+      text-decoration: line-through;
+    }
+
+    .hotel__card__discount__percent__container {
+      background-color: $primary;
+      border-radius: 8px;
+      padding: 4px;
+      color: white;
+      font-weight: bold;
     }
   }
 }

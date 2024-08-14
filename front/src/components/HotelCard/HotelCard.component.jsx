@@ -21,6 +21,7 @@ const HotelCardBase = ({
   preview,
   avgScore,
   reviewCount,
+  opening,
 }) => (
   <div className="hotel__card">
     <img src={pictureId} />
@@ -35,6 +36,16 @@ const HotelCardBase = ({
       </div>
     </div>
     <p>{preview}</p>
+    {
+      opening && (
+      <div className='hotel__card__opening__container'>
+        <p className='hotel__card__opening__discount'>{opening.discountPrice}€</p>
+        <p className='hotel__card__opening__price'>{opening.price}€</p>
+        <div className='hotel__card__discount__percent__container'>
+          <p>{(((opening.discountPrice * 100) / opening.price) - 100).toFixed(0)}%</p>
+        </div>
+      </div>
+    )}
   </div>
 )
 
