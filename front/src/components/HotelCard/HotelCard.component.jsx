@@ -8,10 +8,10 @@ const StarBase = ({
   let index = 0;
   let result = '';
   while (index < stars) {
-    result = `${result}\u066d`;
+    result = `${result}*`;
     index++;
   }
-  return (<p className='hotel__card__stars'>{result}</p>);
+  return result;
 }
 
 const HotelCardBase = ({
