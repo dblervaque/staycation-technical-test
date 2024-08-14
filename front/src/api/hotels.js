@@ -17,3 +17,15 @@ export const fetchHotelReview = async (
   }
   return res.json();
 }
+
+export const fetchHotelOpenings = async (
+  hotelId,
+) => {
+  const res = await fetch(`http://localhost:9000/hotels/${hotelId}/openings`);
+
+  if (res.status >= 400) {
+    throw new Error('Error computing openings');
+  }
+
+  return res.json();
+}
